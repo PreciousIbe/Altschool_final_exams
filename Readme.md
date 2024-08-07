@@ -24,11 +24,27 @@ This Capstone project involves building an end-to-end ETL (Extract, Transform, L
 
 ### 1. Data Ingestion into PostgreSQL
 
-- **Download Dataset**: Obtain the Brazilian E-Commerce dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+- **Download Dataset**: Obtain the Brazilian E-Commerce dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) into your local laptop.
   
 - **Setup PostgreSQL**: 
   - Configure PostgreSQL using Docker and Docker Compose.
   - Create a database named `e_commerce`.
 
-- **Create Tables/Ingest Data**: Load the data into PostgreSQL tables using an `init.sql` script  that can be found in the `infr_setup` folder during Docker setup.
+- **Create Tables/Ingest Data**: Load the data into PostgreSQL tables using an `init.sql` script  that can be found in the `infra_setup` folder during Docker setup.
 
+### 2. Configure Apache Airflow
+
+- **Install Airflow**: Integrate Airflow into the Docker Compose setup as a service.
+
+- **Create DAG**: 
+  - Design an Airflow Directed Acyclic Graph (DAG) for orchestrating the ETL workflow.
+
+### 3. Load Data into BigQuery
+
+- **Setup BigQuery**: 
+  - Create a new project on Google Cloud Platform (GCP).
+  - Enable the BigQuery API and set up a service account and dataset for the e_commerce data.
+
+- **Load Data**: 
+  - Use Airflow to extract data from PostgreSQL.
+  - Load the processed data into BigQuery.
