@@ -1,1 +1,7 @@
 pg_data
+myenv
+postgres-db-volume
+logs
+.env
+__pycache__
+config/*.json
