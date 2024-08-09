@@ -1,0 +1,15 @@
+# This a template of what the profiles.yml file should look like, you can update it with your own information
+alt_school_dbt:
+  outputs:
+    dev:
+      dataset: ecommerce_dbt
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: <PATH to your service account key>
+      location: US
+      method: service-account
+      priority: interactive
+      project: <Project-id>
+      threads: 1
+      type: bigquery
+  target: dev
