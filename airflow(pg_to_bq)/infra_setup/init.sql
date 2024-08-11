@@ -39,7 +39,7 @@ create table if not exists E_COMMERCE.olist_order_items_dataset
     seller_id varchar,
     shipping_limit_date timestamp,
     price numeric,
-    freight_value numeric
+    freight_value timestamp
 );
 -- This command copies the data in the /data folder into E_COMMERCE.olist_order_items_dataset
 COPY E_COMMERCE.olist_order_items_dataset (order_id, order_item_id, product_id, seller_id, shipping_limit_date, price, freight_value)

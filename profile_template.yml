@@ -2,7 +2,7 @@
 alt_school_dbt:
   outputs:
     dev:
-      dataset: ecommerce_dbt
+      dataset: <Name you want to call your dataset>
       job_execution_timeout_seconds: 300
       job_retries: 1
       keyfile: <PATH to your service account key>

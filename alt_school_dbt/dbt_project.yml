@@ -31,6 +31,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   alt_school_dbt:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    # Configuration for the entire project
+    +materialized: view  # This sets all models to materialize as views by default
+
+    # Configuration for specific folders or models
+    source:  # Folder or model name
+      +materialized: table  # Overrides the default for models in this folder to materialize as tables
+
+      # Optionally, you can set a schema for models in this folder
+      +schema: source
