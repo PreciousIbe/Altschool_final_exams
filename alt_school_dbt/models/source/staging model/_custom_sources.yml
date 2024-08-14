@@ -2,10 +2,9 @@ version: 2
 
 sources:
   - name: ecommerce_sources
-    database: alt_school_dbt
+    database: altschool-project-430822
     schema: ecommerce
     tables:
-      - name: olist_ customers_dataset
       - name: olist_customers_dataset
       - name: olist_geolocation_dataset 
       - name: olist_order_items_dataset
