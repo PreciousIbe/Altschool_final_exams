@@ -46,5 +46,52 @@ This Capstone project involves building an end-to-end ETL (Extract, Transform, L
   - Enable the BigQuery API and set up a service account and dataset for the e_commerce data.
 
 - **Load Data**: 
-  - Use Airflow to extract data from PostgreSQL.
-  - Load the processed data into BigQuery.
+  - Use Airflow to extract data from PostgreSQL to a GCS Bucket.
+  - Then Load the processed data into BigQuery using Airflow as well.
+
+### 4. Data Transformation with dbt
+
+- **Setting up dbt core**: 
+  - Install dbt and initialize a new project.
+
+- **Configure dbt**: 
+  - Connect dbt to your BigQuery dataset.
+
+- **Create Models**:
+  - Develop dbt models to clean and structure the data for analysis.
+
+## The Data Models are:
+
+**Staging Models**
+- `stg_orders.sql`: Stores the raw orders data
+- `stg_products.sql`: Stores the raw product data.
+- `stg_customers.sql`: Stores the raw customers data.
+- `stg_order_items.sql`: Stores the raw order items data.
+
+**Intermediate Models**
+- `int_sales_by_category.sql`: Aggregates sales by product category.
+- `int_avg_delivery_time.sql`: Computes average delivery time.
+- `int_orders_by_state.sql`: Counts orders by state.
+
+**Final Models**
+- `fct_sales_by_category.sql`: Final model for sales by category.
+- `fct_avg_delivery_time.sql`: Final model for average delivery time.
+- `fct_orders_by_state.sql`: Final model for orders by state.
+
+**Create a `_custom_sources.yml` file to be able to connect to the ecommerce Bigquery Dataset**
+
+### 5. Answer Analytical Questions
+
+Analyze the sql queries on our final models to address the following busniess logic/questions:
+
+1. **Which product categories have the highest sales?**
+   - Aggregate sales data by product category.
+   (We see that the product with the highest sales is: ... with a sale price of ...)
+
+2. **What is the average delivery time for orders?**
+   - Calculate the average time between order placement and delivery.
+   (We see that the average delivery time for orders is ...)
+
+3. **Which states have the highest number of orders?**
+   - Count the number of orders per state.
+   (We see that the state with the highest number of orders is ...)
