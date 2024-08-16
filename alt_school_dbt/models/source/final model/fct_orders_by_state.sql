@@ -4,4 +4,4 @@ select
 from
     {{ ref('int_orders_by_state') }}
 order by 
-    customer_state
+    total_orders desc

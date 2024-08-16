@@ -4,7 +4,7 @@ with customer_orders as (
         customer_city,
         customer_state
     from 
-        {{ source('ecommerce_sources', 'olist_customers_dataset') }}
+        {{ source('sources', 'olist_customers_dataset') }}
 )
 select 
     * 

@@ -5,7 +5,7 @@ with order_items as (
         price,
         freight_value
     from 
-        {{ source('ecommerce_sources', 'olist_order_items_dataset') }}
+        {{ source('sources', 'olist_order_items_dataset') }}
 )
 select 
     *

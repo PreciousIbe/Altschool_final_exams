@@ -1,8 +1,6 @@
 select
-    order_id,
-    customer_state,
-    avg_delivery_time
+    avg(avg_delivery_time) as overall_avg_delivery_time
 from 
     {{ ref('int_avg_delivery_time') }}
-order by 
-    order_id
+where
+    avg_delivery_time is not null

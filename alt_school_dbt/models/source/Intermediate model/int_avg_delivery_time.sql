@@ -1,21 +1,21 @@
-with delivery_times as(
+with delivery_time as (
     select 
         order_id,
-        customer_state,
-        order_delivered_customer_date - order_purchase_timestamp as delivery_time
+        order_status,
+        order_purchase_timestamp,
+        order_delivered_customer_date,
+        TIMESTAMP_DIFF(order_delivered_customer_date, order_purchase_timestamp, minute) as delivery_time_diff
     from 
-        {{ ref('stg_orders') }} o
-    join
-        {{ ref('stg_customers') }} c
-    on 
-        o.customer_id = c.customer_id
-    where order_delivered_customer_date is not null
+        {{ ref('stg_orders') }}
+    where 
+        order_status = 'delivered'
+        and order_delivered_customer_date is not null
+        and order_purchase_timestamp is not null
 )
 select 
     order_id,
-    customer_state,
-    avg(delivery_time) as avg_delivery_time
+    avg(delivery_time_diff) as avg_delivery_time
 from 
-    delivery_times
+    delivery_time
 group by 
-    order_id, customer_state
+    order_id

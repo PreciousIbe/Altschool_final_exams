@@ -1,11 +1,11 @@
 with products as (
     select 
-        product_id,
-        product_category_name as product_name
+        cast(product_id as string) as product_id,
+        product_category_name
     from 
-        {{ source('ecommerce_sources', 'olist_products_dataset') }}
+        {{ source('sources', 'olist_products_dataset') }}
 )
 select
     * 
-from 
+from
     products
